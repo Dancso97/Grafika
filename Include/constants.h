@@ -1,0 +1,35 @@
+//
+// Created by Dani on 2019. 04.
+//
+
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+#ifndef WINDOW_HEIGHT
+#define WINDOW_DEFAULT_HEIGHT 1024
+#endif
+
+#ifndef WINDOW_WIDTH
+#define WINDOW_DEFAULT_WIDTH 1280
+#endif
+
+#ifndef WINDOW_VIEWPORT_RATIO
+#define WINDOW_VIEWPORT_RATIO 4/3   // screen ratio 4:3
+#endif
+
+#ifndef WINDOW_ASPECT_RATIO
+#define WINDOW_ASPECT_RATIO 50.0    // fow (field of view)
+#endif
+
+#ifndef M_PI
+#define M_PI 3.141592653589793238462643383279502884197169399375105820974944592307816406286
+#endif
+
+#ifndef INVALID_VERTEX_INDEX
+#define INVALID_VERTEX_INDEX 0
+#endif
+
+#ifndef LINE_BUFFER_SIZE
+#define LINE_BUFFER_SIZE 1024
+#endif
+
+#endif //CONSTANTS_H

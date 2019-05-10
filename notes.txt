@@ -1,0 +1,9 @@
+[Textúra]
+Háttér fix(csak a tengelyeken rendezés, bound box
+
+[Mozgatás]
+Görbe mentén forgatás
+
+[Extra]
+"űrszemét" mint fog.
+Kijelölés
