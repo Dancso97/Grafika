@@ -23,5 +23,7 @@ void initGame();
 
 void renderGame();
 
+void updateAnimatedObject(double rotationDegree);
+
 
 #endif //GAME_H

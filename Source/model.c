@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <GL/glut.h>
 
-#include "../Include/model.h"
-#include "../Include/constants.h"
+#include "model.h"
+#include "constants.h"
 
 int count_tokens(const char *text) {
     int i = 0;

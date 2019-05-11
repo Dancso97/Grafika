@@ -4,17 +4,17 @@
 
 #include <GL/glut.h>
 
-#include "../Include/light.h"
-#include "../Include/constants.h"
+#include "light.h"
+#include "constants.h"
 
 Light light;
 
 void initLight() {
     light.id = GL_LIGHT0;
 
-    light.position[0] = 100.0;   //x
-    light.position[1] = 100.0;   //y
-    light.position[2] = 100.0;   //z
+    light.position[0] = 40.0;   //x
+    light.position[1] = 40.0;   //y
+    light.position[2] = 40.0;   //z
     light.position[3] = 0.0;     //4. dimenzió
 
     light.color[0] = 1.0;        //Red
@@ -44,7 +44,7 @@ void lightKeyboardNormalButtonHandler(unsigned char key, int x, int y) {
             light.intensity -= 0.025;
             break;
     }
-
+	
     if (light.intensity > 1.5) {
         light.intensity = 1.5;
     }

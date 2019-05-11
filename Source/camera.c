@@ -6,8 +6,8 @@
 #include <math.h>
 #include <stdbool.h>
 
-#include "../Include/camera.h"
-#include "../Include/constants.h"
+#include "camera.h"
+#include "constants.h"
 
 Camera camera;
 

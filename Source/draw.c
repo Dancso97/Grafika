@@ -4,9 +4,9 @@
 
 #include <GL/glut.h>
 
-#include "../Include/draw.h"
-#include "../Include/model.h"
-#include "../Include/constants.h"
+#include "draw.h"
+#include "model.h"
+#include "constants.h"
 
 void draw_triangles(const struct Model *model) {
     int i, k;
@@ -71,45 +71,64 @@ void draw_model(const struct Model *model) {
     draw_triangles(model);
 }
 
-void draw_Sky(GLuint texture){
-    glEnable(GL_TEXTURE_2D);
-    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-    glBindTexture(GL_TEXTURE_2D, texture);
+void draw_Sky(Texture* texture){
+	//Skyboxra kikapcsoljunk a fényeket hogy a képet adjuk vissza
+	glDisable(GL_LIGHTING);
+	
+	// elől
+	glBindTexture(GL_TEXTURE_2D, texture[2].id);
     glBegin(GL_QUADS);
-    // elől
-    glTexCoord2d(0, 0); glVertex3d(80, 0, 0);
-    glTexCoord2d(1, 0); glVertex3d(80, 80, 0);
-    glTexCoord2d(1, 1); glVertex3d(0, 80, 0);
-    glTexCoord2d(0, 1); glVertex3d(0, 0, 0);
-
-    // bal oldal
-    glTexCoord2d(0, 0); glVertex3d(80, 0, 0);
-    glTexCoord2d(1, 0); glVertex3d(80, 80, 0);
-    glTexCoord2d(1, 1); glVertex3d(80, 80, 80);
-    glTexCoord2d(0, 1); glVertex3d(80, 0, 80);
-
-    // hátul
-    glTexCoord2d(0, 0); glVertex3d(0, 0, 0);
-    glTexCoord2d(1, 0); glVertex3d(0, 80, 0);
-    glTexCoord2d(1, 1); glVertex3d(0, 80, 80);
-    glTexCoord2d(0, 1); glVertex3d(0, 0, 80);
+		glTexCoord2d(0, 0); glVertex3d(100, -100, 100);
+		glTexCoord2d(1, 0); glVertex3d(100, 100, 100);
+		glTexCoord2d(1, 1); glVertex3d(-100, 100, 100);
+		glTexCoord2d(0, 1); glVertex3d(-100, -100, 100);
+	glEnd();
 
     // jobb oldal
-    glTexCoord2d(0, 0); glVertex3d(0, 0, 0);
-    glTexCoord2d(1, 0); glVertex3d(80, 0, 0);
-    glTexCoord2d(1, 1); glVertex3d(80, 0, 80);
-    glTexCoord2d(0, 1); glVertex3d(0, 0, 80);
-
+	glBindTexture(GL_TEXTURE_2D, texture[3].id);
+	glBegin(GL_QUADS);
+		glTexCoord2d(0, 0); glVertex3d(100, -100, -100);
+		glTexCoord2d(1, 0); glVertex3d(100, 100, -100);
+		glTexCoord2d(1, 1); glVertex3d(100, 100, 100);
+		glTexCoord2d(0, 1); glVertex3d(100, -100, 100);
+	glEnd();
+	
+    // bal
+	glBindTexture(GL_TEXTURE_2D, texture[4].id);
+	glBegin(GL_QUADS);
+		glTexCoord2d(0, 0); glVertex3d(-100, -100, -100);
+		glTexCoord2d(1, 0); glVertex3d(-100, 100, -100);
+		glTexCoord2d(1, 1); glVertex3d(-100, 100, 100);
+		glTexCoord2d(0, 1); glVertex3d(-100, -100, 100);
+	glEnd();
+	
+    // alul
+	glBindTexture(GL_TEXTURE_2D, texture[5].id);
+	glBegin(GL_QUADS);
+		glTexCoord2d(0, 0); glVertex3d(-100, -100, -100);
+		glTexCoord2d(1, 0); glVertex3d(100, -100, -100);
+		glTexCoord2d(1, 1); glVertex3d(100, -100, 100);
+		glTexCoord2d(0, 1); glVertex3d(-100, -100, 100);
+	glEnd();
+	
     // fent
-    glTexCoord2d(0, 0); glVertex3d(0, 80, 80);
-    glTexCoord2d(1, 0); glVertex3d(80, 80, 80);
-    glTexCoord2d(1, 1); glVertex3d(80, 80, 0);
-    glTexCoord2d(0, 1); glVertex3d(0, 80, 0);
-
-    // lent
-    glTexCoord2d(0, 0); glVertex3d(80, 0, 80);
-    glTexCoord2d(1, 0); glVertex3d(80, 80, 80);
-    glTexCoord2d(1, 1); glVertex3d(0, 80, 80);
-    glTexCoord2d(0, 1); glVertex3d(0, 0, 80);
-    glEnd();
+	glBindTexture(GL_TEXTURE_2D, texture[6].id);
+	glBegin(GL_QUADS);
+		glTexCoord2d(0, 0); glVertex3d(-100, 100, 100);
+		glTexCoord2d(1, 0); glVertex3d(100, 100, 100);
+		glTexCoord2d(1, 1); glVertex3d(100, 100, -100);
+		glTexCoord2d(0, 1); glVertex3d(-100, 100, -100);
+	glEnd();
+	
+    // hátul
+	glBindTexture(GL_TEXTURE_2D, texture[7].id);
+	glBegin(GL_QUADS);
+		glTexCoord2d(0, 0); glVertex3d(100, -100, -100);
+		glTexCoord2d(1, 0); glVertex3d(100, 100, -100);
+		glTexCoord2d(1, 1); glVertex3d(-100, 100, -100);
+		glTexCoord2d(0, 1); glVertex3d(-100, -100, -100);
+	glEnd();
+	
+	//Visszakapcsoljuk a fényeket
+	glEnable(GL_LIGHTING);
 }

@@ -24,6 +24,6 @@ void draw_triangles(const struct Model *model);
  */
 void draw_quads(const struct Model *model);
 
-void draw_Sky(unsigned int texture);
+void draw_Sky(Texture* texture);
 
 #endif /* DRAW_H */

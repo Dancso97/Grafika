@@ -6,8 +6,8 @@
 #include <SOIL/SOIL.h>
 #include <stdio.h>
 
-#include "../Include/texture.h"
-#include "../Include/constants.h"
+#include "texture.h"
+#include "constants.h"
 
 void loadTexture(Texture *texture, const char filename[100]) {
     glGenTextures(1, &texture->id);

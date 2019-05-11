@@ -3,13 +3,13 @@
 //
 #include <GL/glut.h>
 
-#include "../Include/callbacks.h"
-#include "../Include/constants.h"
-#include "../Include/camera.h"
-#include "../Include/game.h"
-#include "../Include/light.h"
-#include "../Include/helpmenu.h"
-#include "../Include/camera.h"
+#include "callbacks.h"
+#include "constants.h"
+#include "camera.h"
+#include "game.h"
+#include "light.h"
+#include "helpmenu.h"
+#include "camera.h"
 
 
 void setCallbacks() {
@@ -103,5 +103,15 @@ void idle() {
 
     // FONTOS glutPostRedisplay() alapvetően ne tegyünk ide,
     //    mert a program folyamatosan frissíteni fogja a képet (display metódussal) fölöslegesen
+	
+	const int rotationPeriodTimeInSec = 10;
+	
+	int currentTime = glutGet(GLUT_ELAPSED_TIME);
+	double rotationRatio = (double)currentTime / (rotationPeriodTimeInSec * 1000);
+	double rotationPercentage = rotationRatio - (int) rotationRatio;
+	
+	double rotationDegree = 360 * rotationPercentage;
+	updateAnimatedObject(rotationDegree);
+	glutPostRedisplay();
 }
 

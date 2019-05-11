@@ -5,15 +5,15 @@
 #include <GL/glut.h>
 #include <stdbool.h>
 
-#include "../Include/texture.h"
-#include "../Include/constants.h"
-#include "../Include/helpmenu.h"
+#include "texture.h"
+#include "constants.h"
+#include "helpmenu.h"
 
 HelpMenu helpMenu;
 
 void initHelpMenu() {
     helpMenu.isShown = false;
-    loadTexture(&(helpMenu.texture), "../Texture/help.png");
+    loadTexture(&(helpMenu.texture), "Texture/help.png");
     // ezt a képet fogjuk megjeleníteni mint help menüt
 }
 

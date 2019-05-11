@@ -4,24 +4,32 @@
 
 #include <GL/glut.h>
 
-#include "../Include/game.h"
-#include "../Include/model.h"
-#include "../Include/draw.h"
-#include "../Include/texture.h"
-#include "../Include/constants.h"
+#include "game.h"
+#include "model.h"
+#include "draw.h"
+#include "texture.h"
+#include "constants.h"
 
 GameObject gameObjects[2];
 Model models[1]; //azért van rá szükség mert többször is le lehet rakni ugyan azt az objektumot
-Texture textures[3]; //azért van rá szükség mert több textúrája is lehet egy objektumnak
+Texture textures[8]; //azért van rá szükség mert több textúrája is lehet egy objektumnak
 
 void initGame() {
-    load_model("../Model/planet", &(models[0]));
+    load_model("Model/planet", &(models[0]));
 
     scale_model(&(models[0]), 0.2, 0.2, 0.2);
 
-    loadTexture(&(textures[0]), "../Texture/EarthMap.jpg");
-    loadTexture(&(textures[1]), "../Texture/MoonMap.jpg");
-    loadTexture(&(textures[2]), "../Texture/space2.bmp");
+    loadTexture(&(textures[0]), "Texture/EarthMap.jpg");
+    loadTexture(&(textures[1]), "Texture/MoonMap.jpg");
+
+	//Skybox
+	loadTexture(&(textures[2]), "Texture/cwd_ft.JPG");
+	loadTexture(&(textures[3]), "Texture/cwd_rt.JPG");
+	loadTexture(&(textures[4]), "Texture/cwd_lf.JPG");
+	loadTexture(&(textures[5]), "Texture/cwd_dn.JPG");
+	loadTexture(&(textures[6]), "Texture/cwd_up.JPG");
+    loadTexture(&(textures[7]), "Texture/cwd_bk.JPG");
+
 
     gameObjects[0].model = models[0];
     gameObjects[0].texture = textures[0];
@@ -44,7 +52,10 @@ void initGame() {
 
 void renderGame() {
     // egyesével rajzoljuk ki az objektumokat:
-    draw_Sky(textures[2].id);
+	glPushMatrix();
+    draw_Sky(textures);
+	glPopMatrix();
+	
     glPushMatrix();
     glBindTexture(GL_TEXTURE_2D, gameObjects[0].texture.id);
     glTranslatef(gameObjects[0].posX, gameObjects[0].posY, gameObjects[0].posZ);
@@ -79,4 +90,8 @@ void renderGame() {
     //   glPopMatrix();
     // }
 
+}
+
+void updateAnimatedObject(double rotationDegree) {
+	gameObjects[0].rotateY = rotationDegree;
 }

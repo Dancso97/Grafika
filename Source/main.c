@@ -4,12 +4,12 @@
 
 #include <GL/glut.h>
 
-#include "../Include/constants.h"
-#include "../Include/callbacks.h"
-#include "../Include/camera.h"
-#include "../Include/game.h"
-#include "../Include/light.h"
-#include "../Include/helpmenu.h"
+#include "constants.h"
+#include "callbacks.h"
+#include "camera.h"
+#include "game.h"
+#include "light.h"
+#include "helpmenu.h"
 
 void initOpenGLConfig() {
     glShadeModel(GL_SMOOTH);
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     glutInit(&argc, argv);
     glutInitWindowSize(WINDOW_DEFAULT_WIDTH, WINDOW_DEFAULT_HEIGHT);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
-    int window = glutCreateWindow("Tutorial_1");
+    int window = glutCreateWindow("Beadando");
     glutSetWindow(window);
 
     initOpenGLConfig();
